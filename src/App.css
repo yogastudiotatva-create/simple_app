@@ -1,15 +1,612 @@
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #8B4513;
+  --secondary-color: #D2691E;
+  --accent-color: #FF6B35;
+  --light-bg: #FFF8F3;
+  --dark-text: #2C3E50;
+  --light-text: #7F8C8D;
+  --success-color: #27AE60;
+  --border-color: #E8D5C4;
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-text);
+  background-color: #FEFCF9;
+}
+
+.app {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(139, 69, 19, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--light-bg);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content .tagline {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #FFE4B5;
+  font-style: italic;
+}
+
+.hero-content .subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about {
+  padding: 80px 20px;
+  background-color: white;
+}
+
+.about h2,
+.programs h2,
+.diet-plans h2,
+.why-tatva h2,
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.section-intro {
+  text-align: center;
+  color: var(--light-text);
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  color: var(--dark-text);
+  font-size: 1.05rem;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.mission-card {
+  background: linear-gradient(135deg, var(--light-bg) 0%, white 100%);
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 5px solid var(--secondary-color);
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.mission-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+/* ===== PROGRAMS SECTION ===== */
+.programs {
+  padding: 80px 20px;
+  background-color: var(--light-bg);
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.program-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: var(--transition);
+  border-top: 4px solid var(--accent-color);
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.program-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.program-card p {
+  color: var(--light-text);
+  line-height: 1.6;
+}
+
+.outcomes {
+  margin: 60px 0;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.outcomes h3 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.outcome-badge {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(210, 105, 30, 0.2);
+}
+
+.membership-plans {
+  margin-top: 60px;
   text-align: center;
 }
 
-h1 {
+.membership-plans h3 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.plan-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.plan-card:hover {
+  border-color: var(--secondary-color);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(210, 105, 30, 0.2);
+}
+
+.plan-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.plan-price {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ===== DIET PLANS SECTION ===== */
+.diet-plans {
+  padding: 80px 20px;
+  background: white;
+}
+
+.diet-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.diet-column h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.benefits-list,
+.forwhom-list {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits-list li,
+.forwhom-list li {
+  padding: 10px 0;
+  color: var(--dark-text);
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.benefits-list li:last-child,
+.forwhom-list li:last-child {
+  border-bottom: none;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.ingredient {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+
+.results {
+  background: linear-gradient(135deg, var(--light-bg), #FFF8DC);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: var(--dark-text);
+}
+
+/* ===== WHY TATVA SECTION ===== */
+.why-tatva {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--light-bg), white);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+}
+
+.value-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: var(--transition);
+  border-top: 4px solid var(--secondary-color);
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border-top-color: var(--accent-color);
+}
+
+.value-icon {
   font-size: 3rem;
-  color: #333;
+  margin-bottom: 15px;
+}
+
+.value-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.value-card p {
+  color: var(--light-text);
+  line-height: 1.6;
+}
+
+.cta-box {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 50px 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 60px;
+  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.3);
+}
+
+.cta-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.cta-box p {
+  margin-bottom: 10px;
+  opacity: 0.95;
+}
+
+.cta-box .subtitle {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+  padding: 80px 20px;
+  background-color: var(--light-bg);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 50px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid var(--secondary-color);
+}
+
+.info-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.info-card p {
+  color: var(--light-text);
+  line-height: 1.8;
+}
+
+/* ===== FORM ===== */
+.contact-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--dark-text);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 8px rgba(210, 105, 30, 0.2);
+}
+
+.contact-form .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 60px 20px 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.footer-section a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-section a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content .tagline {
+    font-size: 1.3rem;
+  }
+
+  .hero-content .subtitle {
+    font-size: 1rem;
+  }
+
+  .about h2,
+  .programs h2,
+  .diet-plans h2,
+  .why-tatva h2,
+  .contact h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 25px;
+  }
+
+  .values-grid,
+  .mission-grid,
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .diet-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-box {
+    padding: 30px 20px;
+  }
+
+  .cta-box h3 {
+    font-size: 1.3rem;
+  }
 }
